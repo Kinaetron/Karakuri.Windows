@@ -3,7 +3,7 @@
 namespace Karakuri
 {
 	Game::Game() { }
-	Game::Game(int width, int height, std::wstring_view name)
+	Game::Game(int width, int height, const std::wstring& name)
 	{
 		_name = name;
 		_width = width;

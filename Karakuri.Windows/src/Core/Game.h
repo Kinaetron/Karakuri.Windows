@@ -1,5 +1,5 @@
 #pragma once
-#include <string_view>
+#include <string>
 
 namespace Karakuri
 {
@@ -7,7 +7,7 @@ namespace Karakuri
 	{
 	public:
 		Game();
-		Game(int width, int height, std::wstring_view name);
+		Game(int width, int height, const std::wstring &name);
 		virtual ~Game();
 		virtual void Initalize();
 		virtual void Update();
@@ -15,12 +15,12 @@ namespace Karakuri
 
 		int Width() { return _width; }
 		int Height() { return _height; }
-		std::wstring_view Name() { return _name; }
+		const std::wstring& Name() { return _name; }
 
 	private:
 		int _width = 1920;
 		int _height = 1080;
-		std::wstring_view _name = L"Karakuri Game";
+		std::wstring _name = L"Karakuri Game";
 	};
 	// To be defined in client
 	Game* CreateGame();

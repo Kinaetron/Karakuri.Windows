@@ -13,7 +13,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine
 
 	game->Initalize();
 
-	const wchar_t CLASS_NAME[] = L"Something needs to go here I guess ?";
+	const wchar_t CLASS_NAME[] = L"Karakuri Engine";
 
 	WNDCLASS wc = {};
 	wc.lpfnWndProc = WindowProc;
@@ -25,7 +25,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine
 	HWND hwnd = CreateWindowEx(
 		0,
 		CLASS_NAME,
-		std::wstring(game->Name().begin(), game->Name().end()).c_str(),
+		game->Name().c_str(),
 		WS_OVERLAPPEDWINDOW,
 		CW_USEDEFAULT,
 		CW_USEDEFAULT,
