@@ -1,6 +1,7 @@
 #pragma once
 #include "Game.h"
 #include "SystemIncludes.h"
+#include <string>
 
 extern Karakuri::Game* Karakuri::CreateGame();
 
@@ -8,6 +9,10 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
 int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine, int nCmdShow)
 {
+	auto game = Karakuri::CreateGame();
+
+	game->Initalize();
+
 	const wchar_t CLASS_NAME[] = L"Something needs to go here I guess ?";
 
 	WNDCLASS wc = {};
@@ -18,14 +23,14 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine
 	RegisterClass(&wc);
 
 	HWND hwnd = CreateWindowEx(
-		0, 
+		0,
 		CLASS_NAME,
-		L"Game Name",
+		std::wstring(game->Name().begin(), game->Name().end()).c_str(),
 		WS_OVERLAPPEDWINDOW,
-		CW_USEDEFAULT, 
-		CW_USEDEFAULT, 
-		CW_USEDEFAULT, 
 		CW_USEDEFAULT,
+		CW_USEDEFAULT,
+		game->Width(),
+		game->Height(),
 		NULL,
 		NULL,
 		hInstance,
@@ -40,13 +45,21 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine
 
 
 	MSG msg = {};
-	while (GetMessage(&msg, NULL, 0, 0) > 0)
+	while (msg.message != WM_QUIT)
 	{
-		TranslateMessage(&msg);
-		DispatchMessage(&msg);
+		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE)) 
+		{
+			TranslateMessage(&msg);
+			DispatchMessage(&msg);
+		}
+		else 
+		{
+			game->Update();
+			game->Draw();
+		}
 	}
 
-	return 0;
+	return static_cast<int>(msg.wParam);
 }
 
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)

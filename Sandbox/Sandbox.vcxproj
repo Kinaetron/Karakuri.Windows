@@ -135,7 +135,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Sandbox.cpp" />
+    <ClCompile Include="ExampleGame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Karakuri.Windows\Karakuri.Windows.vcxproj">

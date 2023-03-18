@@ -6,6 +6,18 @@ class ExampleGame : public Karakuri::Game
 public:
 	ExampleGame() { }
 	~ExampleGame() { }
+
+	void Initalize() override
+	{
+	}
+
+	void Update() override
+	{
+	}
+
+	void Draw() override
+	{
+	}
 };
 
 Karakuri::Game* Karakuri::CreateGame() {
