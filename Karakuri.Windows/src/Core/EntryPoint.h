@@ -26,7 +26,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine
 		0,
 		CLASS_NAME,
 		game->GetName().c_str(),
-		WS_OVERLAPPEDWINDOW,
+		(WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX | WS_MAXIMIZEBOX),
 		CW_USEDEFAULT,
 		CW_USEDEFAULT,
 		game->GetWidth(),

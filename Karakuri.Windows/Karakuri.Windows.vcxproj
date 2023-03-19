@@ -139,9 +139,11 @@
     <ClInclude Include="src\Core\Game.h" />
     <ClInclude Include="src\Core\SystemIncludes.h" />
     <ClInclude Include="src\Core\Timer.h" />
+    <ClInclude Include="src\Graphics\Graphics.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Game.cpp" />
+    <ClCompile Include="src\Graphics\Graphics.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
