@@ -7,23 +7,27 @@ class ExampleGame : public Karakuri::Game
 {
 public:
 	ExampleGame() 
-	{ 
+	{
 	}
 
 	~ExampleGame() 
-	{ 
+	{
+		Game::~Game();
 	}
 
 	void Initalize() override
 	{
+		Game::Initalize();
 	}
 
 	void Update() override
 	{
+		Game::Update();
 	}
 
 	void Draw() override
 	{
+		Game::Draw();
 	}
 };
 

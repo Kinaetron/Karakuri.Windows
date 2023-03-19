@@ -15,6 +15,13 @@ namespace Karakuri
 		Draw();
 	}
 	void Game::Initalize() { }
+
 	void Game::Update() { }
-	void Game::Draw() { }
+
+	void Game::Draw() 
+	{
+		if (_timer.GetFrameCount() == 0) {
+			return;
+		}
+	}
 }
