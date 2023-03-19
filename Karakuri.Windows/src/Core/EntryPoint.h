@@ -1,6 +1,6 @@
 #pragma once
-#include "Game.h"
 #include "SystemIncludes.h"
+#include "Game.h"
 #include <string>
 
 extern Karakuri::Game* Karakuri::CreateGame();
@@ -25,12 +25,12 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine
 	HWND hwnd = CreateWindowEx(
 		0,
 		CLASS_NAME,
-		game->Name().c_str(),
+		game->GetName().c_str(),
 		WS_OVERLAPPEDWINDOW,
 		CW_USEDEFAULT,
 		CW_USEDEFAULT,
-		game->Width(),
-		game->Height(),
+		game->GetWidth(),
+		game->GetHeight(),
 		NULL,
 		NULL,
 		hInstance,
@@ -43,7 +43,6 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine
 
 	ShowWindow(hwnd, nCmdShow);
 
-
 	MSG msg = {};
 	while (msg.message != WM_QUIT)
 	{
@@ -52,10 +51,8 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
 		}
-		else 
-		{
-			game->Update();
-			game->Draw();
+		else {
+			game->Loop();
 		}
 	}
 

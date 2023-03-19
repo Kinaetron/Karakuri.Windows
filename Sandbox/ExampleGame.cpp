@@ -1,11 +1,18 @@
 #include "Core/Game.h"
 #include "Core/EntryPoint.h"
 
+#include <iostream>
+
 class ExampleGame : public Karakuri::Game
 {
 public:
-	ExampleGame() { }
-	~ExampleGame() { }
+	ExampleGame() 
+	{ 
+	}
+
+	~ExampleGame() 
+	{ 
+	}
 
 	void Initalize() override
 	{
@@ -20,6 +27,14 @@ public:
 	}
 };
 
-Karakuri::Game* Karakuri::CreateGame() {
-	return new ExampleGame();
+Karakuri::Game* Karakuri::CreateGame() 
+{
+	auto game = new ExampleGame();
+
+	game->SetWidth(1080);
+	game->SetHeight(720);
+	game->SetName(L"Example Game");
+	game->SetFrameRate(120);
+
+	return game;
 }

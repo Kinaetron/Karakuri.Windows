@@ -138,6 +138,7 @@
     <ClInclude Include="src\Core\EntryPoint.h" />
     <ClInclude Include="src\Core\Game.h" />
     <ClInclude Include="src\Core\SystemIncludes.h" />
+    <ClInclude Include="src\Core\Timer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Game.cpp" />

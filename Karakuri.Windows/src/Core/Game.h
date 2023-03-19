@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "Timer.h"
 
 namespace Karakuri
 {
@@ -7,20 +8,28 @@ namespace Karakuri
 	{
 	public:
 		Game();
-		Game(int width, int height, const std::wstring &name);
 		virtual ~Game();
+
+		void Loop();
 		virtual void Initalize();
 		virtual void Update();
 		virtual void Draw();
 
-		int Width() { return _width; }
-		int Height() { return _height; }
-		const std::wstring& Name() { return _name; }
+		void SetWidth(int width) { _width = width; }
+		void SetHeight(int height) { _height = height; }
+		void SetName(const std::wstring& name) { _name = name; }
+		void SetFrameRate(int frameRate) { _timer.SetTargetFrameRate(frameRate); }
 
-	private:
+		int GetWidth() { return _width; }
+		int GetHeight() { return _height; }
+		const std::wstring& GetName() { return _name; }
+
+	protected:
+		Timer _timer;
 		int _width = 1920;
 		int _height = 1080;
 		std::wstring _name = L"Karakuri Game";
+
 	};
 	// To be defined in client
 	Game* CreateGame();
