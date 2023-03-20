@@ -29,8 +29,8 @@ public:
 	{
 		Game::Draw();
 
-		graphics->Clear();
-		graphics->Present();
+		Graphics->Clear();
+		Graphics->Present();
 	}
 };
 
@@ -41,7 +41,7 @@ Karakuri::Game* Karakuri::CreateGame()
 	game->SetWidth(1080);
 	game->SetHeight(720);
 	game->SetName(L"Example Game");
-	game->SetFrameRate(120);
+	game->SetFrameRate(60);
 
 	return game;
 }

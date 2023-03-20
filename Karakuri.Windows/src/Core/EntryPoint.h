@@ -13,8 +13,6 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine
 {
 	auto game = Karakuri::CreateGame();
 
-	game->Initalize();
-
 	const wchar_t CLASS_NAME[] = L"Karakuri Engine";
 
 	WNDCLASS wc = {};
@@ -43,7 +41,8 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine
 		return 0;
 	}
 
-	game->graphics = std::make_unique<Karakuri::Graphics>(hwnd, game->GetWidth(), game->GetHeight());
+	game->Initalize();
+	game->Graphics = std::make_unique<Karakuri::Graphics>(hwnd, game->GetWidth(), game->GetHeight());
 
 	ShowWindow(hwnd, nCmdShow);
 

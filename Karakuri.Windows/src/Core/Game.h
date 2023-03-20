@@ -33,7 +33,7 @@ namespace Karakuri
 		std::wstring _name = L"Karakuri Game";
 
 	public:
-		std::unique_ptr<Graphics> graphics;
+		std::unique_ptr<Graphics> Graphics;
 
 	};
 	// To be defined in client
