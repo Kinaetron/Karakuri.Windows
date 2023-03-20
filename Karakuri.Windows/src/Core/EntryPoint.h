@@ -1,7 +1,9 @@
 #pragma once
 #include "SystemIncludes.h"
 #include "Game.h"
+#include "../Graphics/Graphics.h"
 #include <string>
+#include <memory>
 
 extern Karakuri::Game* Karakuri::CreateGame();
 
@@ -40,6 +42,8 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine
 	if (hwnd == NULL)  {
 		return 0;
 	}
+
+	game->graphics = std::make_unique<Karakuri::Graphics>(hwnd, game->GetWidth(), game->GetHeight());
 
 	ShowWindow(hwnd, nCmdShow);
 

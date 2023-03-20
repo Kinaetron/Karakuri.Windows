@@ -8,8 +8,9 @@ namespace Karakuri
 	Graphics::Graphics(HWND hwnd, int width, int height)
 	{
 		DXGI_SWAP_CHAIN_DESC swapChainDescription = {};
-		swapChainDescription.BufferDesc.Width = 0;
-		swapChainDescription.BufferDesc.Height = 0;
+		swapChainDescription.BufferDesc.Width = width;
+		swapChainDescription.BufferDesc.Height = height;
+		swapChainDescription.BufferDesc.Format = DXGI_FORMAT_B8G8R8A8_UNORM;
 		swapChainDescription.BufferDesc.RefreshRate.Numerator = 0;
 		swapChainDescription.BufferDesc.RefreshRate.Denominator = 0;
 		swapChainDescription.BufferDesc.Scaling = DXGI_MODE_SCALING_UNSPECIFIED;
@@ -23,25 +24,44 @@ namespace Karakuri
 		swapChainDescription.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;
 		swapChainDescription.Flags = 0;
 
-		D3D11CreateDeviceAndSwapChain(
-			NULL,
+		auto result = D3D11CreateDeviceAndSwapChain(
+			nullptr,
 			D3D_DRIVER_TYPE_HARDWARE,
-			NULL,
+			nullptr,
 			0u,
-			NULL,
+			nullptr,
 			0,
 			D3D11_SDK_VERSION,
 			&swapChainDescription,
 			&_swapChain,
 			&_device,
-			NULL,
+			nullptr,
 			&_deviceContext
 		);
 
 		Microsoft::WRL::ComPtr<ID3D11Resource> backBuffer;
 		_swapChain->GetBuffer(0, __uuidof(ID3D11Resource), &backBuffer);
 		_device->CreateRenderTargetView(backBuffer.Get(), NULL, &_renderTargetView);
+
+		D3D11_VIEWPORT viewPort;
+		viewPort.Width = width;
+		viewPort.Height = height;
+		viewPort.MinDepth = 0.0f;
+		viewPort.MaxDepth = 1.0f;
+		viewPort.TopLeftX = 0.0f;
+		viewPort.TopLeftY = 0.0f;
+		_deviceContext->RSSetViewports(1u, &viewPort);	
+	}
+
+	void Graphics::Clear()
+	{
+		const float color[] = { 0.0f, 1.0f, 1.0f ,1.0f };
+		_deviceContext->ClearRenderTargetView(_renderTargetView.Get(), color);
 		
+	}
+
+	void Karakuri::Graphics::Present() {
+		_swapChain->Present(1u, 0u);
 	}
 
 	Graphics::~Graphics()

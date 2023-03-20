@@ -28,6 +28,9 @@ public:
 	void Draw() override
 	{
 		Game::Draw();
+
+		graphics->Clear();
+		graphics->Present();
 	}
 };
 

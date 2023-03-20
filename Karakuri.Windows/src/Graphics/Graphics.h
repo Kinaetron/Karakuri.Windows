@@ -5,11 +5,13 @@
 
 namespace Karakuri
 {
-	class Graphics
+	 class Graphics
 	{
 	public:
 		Graphics(HWND hwnd, int width, int height);
 		~Graphics();
+		void Clear();
+		void Present();
 
 	private:
 		Microsoft::WRL::ComPtr<ID3D11Device> _device;

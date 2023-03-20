@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
+#include <memory>
 #include "Timer.h"
+#include "../Graphics/Graphics.h"
 
 namespace Karakuri
 {
@@ -29,6 +31,9 @@ namespace Karakuri
 		int _width = 1920;
 		int _height = 1080;
 		std::wstring _name = L"Karakuri Game";
+
+	public:
+		std::unique_ptr<Graphics> graphics;
 
 	};
 	// To be defined in client
