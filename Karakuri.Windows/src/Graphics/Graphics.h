@@ -15,9 +15,9 @@ namespace Karakuri
 		void Present();
 
 	private:
-		Microsoft::WRL::ComPtr<ID3D11Device> _device;
+		Microsoft::WRL::ComPtr<ID3D11Device> _device;                                                                                                              
 		Microsoft::WRL::ComPtr<IDXGISwapChain> _swapChain;
 		Microsoft::WRL::ComPtr<ID3D11DeviceContext> _deviceContext;
 		Microsoft::WRL::ComPtr<ID3D11RenderTargetView> _renderTargetView;
 	};
-}
+}             

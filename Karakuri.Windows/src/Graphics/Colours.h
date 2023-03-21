@@ -21,6 +21,7 @@ namespace Karakuri
 		const static std::unique_ptr<Colour> AliceBlue() { return std::make_unique<Colour>(0.941176534f, 0.972549081f, 1.000000000f, 1.000000000f); }
 		const static std::unique_ptr<Colour> AntiqueWhite() { return std::make_unique<Colour>(0.980392218f, 0.921568692f, 0.843137324f, 1.000000000f); }
 		const static std::unique_ptr<Colour> Aqua() { return std::make_unique<Colour>(0.000000000f, 1.000000000f, 1.000000000f, 1.000000000f); }
+		const static std::unique_ptr<Colour> Aquamarine() { return std::make_unique<Colour>(0.498039246f, 1.000000000f, 0.831372619f, 1.000000000f); }
 		const static std::unique_ptr<Colour> Azure() { return std::make_unique<Colour>(0.941176534f, 1.000000000f, 1.000000000f, 1.000000000f); }
 		const static std::unique_ptr<Colour> Beige() { return std::make_unique<Colour>(0.960784376f, 0.960784376f, 0.862745166f, 1.000000000f); }
 		const static std::unique_ptr<Colour> Bisque() { return std::make_unique<Colour>(1.000000000f, 0.894117713f, 0.768627524f, 1.000000000f); }
@@ -103,6 +104,7 @@ namespace Karakuri
 		const static std::unique_ptr<Colour> MediumOrchid() { return std::make_unique<Colour>(0.729411781f, 0.333333343f, 0.827451050f, 1.000000000f); }
 		const static std::unique_ptr<Colour> MediumPurple() { return std::make_unique<Colour>(0.576470613f, 0.439215720f, 0.858823597f, 1.000000000f); }
 		const static std::unique_ptr<Colour> MediumSeaGreen() { return std::make_unique<Colour>(0.235294133f, 0.701960802f, 0.443137288f, 1.000000000f); }
+		const static std::unique_ptr<Colour> MediumSlateBlue() { return std::make_unique<Colour>(0.482352972f, 0.407843173f, 0.933333397f, 1.000000000f); }
 		const static std::unique_ptr<Colour> MediumTurquoise() { return std::make_unique<Colour>(0.282352954f, 0.819607913f, 0.800000072f, 1.000000000f); }
 		const static std::unique_ptr<Colour> MediumVioletRed() { return std::make_unique<Colour>(0.780392230f, 0.082352944f, 0.521568656f, 1.000000000f); }
 		const static std::unique_ptr<Colour> MidnightBlue() { return std::make_unique<Colour>(0.098039225f, 0.098039225f, 0.439215720f, 1.000000000f); }
