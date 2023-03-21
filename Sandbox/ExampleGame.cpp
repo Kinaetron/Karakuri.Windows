@@ -1,5 +1,6 @@
 #include "Core/Game.h"
 #include "Core/EntryPoint.h"
+#include "Graphics/Colours.h"
 
 #include <iostream>
 
@@ -28,8 +29,7 @@ public:
 	void Draw() override
 	{
 		Game::Draw();
-
-		Graphics->Clear();
+		Graphics->Clear(Karakuri::Colour::CornflowerBlue().get());
 		Graphics->Present();
 	}
 };
@@ -38,9 +38,9 @@ Karakuri::Game* Karakuri::CreateGame()
 {
 	auto game = new ExampleGame();
 
-	game->SetWidth(1080);
-	game->SetHeight(720);
-	game->SetName(L"Example Game");
+	game->SetWidth(1920);
+	game->SetHeight(1080);
+	game->SetName(L"Pluckers");
 	game->SetFrameRate(60);
 
 	return game;

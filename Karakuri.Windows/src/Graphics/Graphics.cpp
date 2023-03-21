@@ -44,8 +44,8 @@ namespace Karakuri
 		_device->CreateRenderTargetView(backBuffer.Get(), NULL, &_renderTargetView);
 
 		D3D11_VIEWPORT viewPort;
-		viewPort.Width = width;
-		viewPort.Height = height;
+		viewPort.Width = static_cast<float>(width);
+		viewPort.Height = static_cast<float>(height);
 		viewPort.MinDepth = 0.0f;
 		viewPort.MaxDepth = 1.0f;
 		viewPort.TopLeftX = 0.0f;
@@ -53,11 +53,8 @@ namespace Karakuri
 		_deviceContext->RSSetViewports(1u, &viewPort);	
 	}
 
-	void Graphics::Clear()
-	{
-		const float color[] = { 0.0f, 1.0f, 1.0f ,1.0f };
-		_deviceContext->ClearRenderTargetView(_renderTargetView.Get(), color);
-		
+	void Graphics::Clear(const Colour* colour) {
+		_deviceContext->ClearRenderTargetView(_renderTargetView.Get(), colour->GetColour());	
 	}
 
 	void Karakuri::Graphics::Present() {

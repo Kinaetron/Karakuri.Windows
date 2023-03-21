@@ -8,7 +8,7 @@ namespace Karakuri
 
 	void Game::Loop()
 	{
-		_timer.Update([&]() {
+		timer.Update([&]() {
 			Update();
 		});
 
@@ -20,7 +20,7 @@ namespace Karakuri
 
 	void Game::Draw() 
 	{
-		if (_timer.GetFrameCount() == 0) {
+		if (timer.GetFrameCount() == 0) {
 			return;
 		}
 	}
