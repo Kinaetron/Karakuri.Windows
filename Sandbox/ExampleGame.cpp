@@ -2,6 +2,7 @@
 #include "Core/EntryPoint.h"
 #include "Graphics/Colours.h"
 
+#include <memory>
 #include <iostream>
 
 class ExampleGame : public Karakuri::Game
@@ -29,19 +30,20 @@ public:
 	void Draw() override
 	{	
 		Game::Draw();
-		Graphics->Clear(Karakuri::Colour::CornflowerBlue());
+		Graphics->Clear(Karakuri::Colour::Black());
+		Graphics->DrawTriangleTest();
 		Graphics->Present();
 	}
 };
 
 Karakuri::Game* Karakuri::CreateGame() 
 {
-	auto game = new ExampleGame();
+	 std::unique_ptr<ExampleGame> game =  std::make_unique<ExampleGame>();
 
 	game->SetWidth(1920);
 	game->SetHeight(1080);
 	game->SetName(L"Pluckers, gimme that wet pepper extra wet extra crispy");
 	game->SetFrameRate(60);
 
-	return game;
+	return game.release();
 }

@@ -3,6 +3,7 @@
 #include "Colours.h"
 #include <wrl.h>
 #include <d3d11.h>
+#include <d3dcompiler.h>
 
 namespace Karakuri
 {
@@ -13,11 +14,12 @@ namespace Karakuri
 		~Graphics();
 		void Clear(const Colour& colour);
 		void Present();
+		void DrawTriangleTest();
 
 	private:
-		Microsoft::WRL::ComPtr<ID3D11Device> _device;                                                                                                              
-		Microsoft::WRL::ComPtr<IDXGISwapChain> _swapChain;
-		Microsoft::WRL::ComPtr<ID3D11DeviceContext> _deviceContext;
-		Microsoft::WRL::ComPtr<ID3D11RenderTargetView> _renderTargetView;
+		Microsoft::WRL::ComPtr<ID3D11Device> device;                                                                                                              
+		Microsoft::WRL::ComPtr<IDXGISwapChain> swapChain;
+		Microsoft::WRL::ComPtr<ID3D11DeviceContext> deviceContext;
+		Microsoft::WRL::ComPtr<ID3D11RenderTargetView> renderTargetView;
 	};
 }             

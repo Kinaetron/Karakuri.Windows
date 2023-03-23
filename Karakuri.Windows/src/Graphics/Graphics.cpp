@@ -33,15 +33,15 @@ namespace Karakuri
 			0,
 			D3D11_SDK_VERSION,
 			&swapChainDescription,
-			&_swapChain,
-			&_device,
+			&swapChain,
+			&device,
 			nullptr,
-			&_deviceContext
+			&deviceContext
 		);
 
 		Microsoft::WRL::ComPtr<ID3D11Resource> backBuffer;
-		_swapChain->GetBuffer(0, __uuidof(ID3D11Resource), &backBuffer);
-		_device->CreateRenderTargetView(backBuffer.Get(), NULL, &_renderTargetView);
+		swapChain->GetBuffer(0, __uuidof(ID3D11Resource), &backBuffer);
+		device->CreateRenderTargetView(backBuffer.Get(), NULL, &renderTargetView);
 
 		D3D11_VIEWPORT viewPort;
 		viewPort.Width = static_cast<float>(width);
@@ -50,15 +50,86 @@ namespace Karakuri
 		viewPort.MaxDepth = 1.0f;
 		viewPort.TopLeftX = 0.0f;
 		viewPort.TopLeftY = 0.0f;
-		_deviceContext->RSSetViewports(1u, &viewPort);	
+		deviceContext->RSSetViewports(1u, &viewPort);	
 	}
 
 	void Graphics::Clear(const Colour& colour) {
-		_deviceContext->ClearRenderTargetView(_renderTargetView.Get(), colour.GetColour());	
+		deviceContext->ClearRenderTargetView(renderTargetView.Get(), colour.GetColour());	
 	}
 
 	void Karakuri::Graphics::Present() {
-		_swapChain->Present(1u, 0u);
+		swapChain->Present(1u, 0u);
+	}
+
+	void Graphics::DrawTriangleTest()
+	{
+		namespace wrl = Microsoft::WRL;
+		HRESULT hr;
+
+		struct Vertex
+		{
+			float x;
+			float y;
+		};
+
+		const Vertex vertices[] =
+		{
+			{ 0.0f,0.5f },
+			{ 0.5f,-0.5f },
+			{ -0.5f,-0.5f },
+		};
+
+		wrl::ComPtr<ID3D11Buffer> vertexBuffer;
+
+		D3D11_BUFFER_DESC bufferDescriptor = {};
+		bufferDescriptor.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+		bufferDescriptor.Usage = D3D11_USAGE_DEFAULT;
+		bufferDescriptor.CPUAccessFlags = 0u;
+		bufferDescriptor.MiscFlags = 0u;
+		bufferDescriptor.ByteWidth = sizeof(vertices);
+		bufferDescriptor.StructureByteStride = sizeof(Vertex);
+
+		D3D11_SUBRESOURCE_DATA subResourceData = {};
+		subResourceData.pSysMem = vertices;
+		device->CreateBuffer(&bufferDescriptor, &subResourceData, &vertexBuffer);
+
+		const UINT stride = sizeof(Vertex);
+		const UINT offset = 0u;
+		deviceContext->IASetVertexBuffers(0u, 1u, vertexBuffer.GetAddressOf(), &stride, &offset);
+
+		wrl::ComPtr<ID3D11PixelShader> pixelShader;
+		wrl::ComPtr<ID3DBlob> blob;
+		D3DReadFileToBlob(L"PixelShader.cso", &blob);
+		device->CreatePixelShader(blob->GetBufferPointer(), blob->GetBufferSize(), NULL, &pixelShader);
+
+		deviceContext->PSSetShader(pixelShader.Get(), NULL, 0u);
+
+		wrl::ComPtr<ID3D11VertexShader> vertexShader;
+		D3DReadFileToBlob(L"VertexShader.cso", &blob);
+		device->CreateVertexShader(blob->GetBufferPointer(), blob->GetBufferSize(), NULL, &vertexShader);
+
+		deviceContext->VSSetShader(vertexShader.Get(), NULL, 0u);
+
+		wrl::ComPtr<ID3D11InputLayout> inputLayout;
+
+		const D3D11_INPUT_ELEMENT_DESC inputElementDescription[] =
+		{
+			{ "Position",0,DXGI_FORMAT_R32G32_FLOAT,0,0,D3D11_INPUT_PER_VERTEX_DATA,0 }
+		};
+
+		device->CreateInputLayout(inputElementDescription,
+			(UINT)std::size(inputElementDescription),
+			blob->GetBufferPointer(),
+			blob->GetBufferSize(),
+			&inputLayout);
+
+		deviceContext->IASetInputLayout(inputLayout.Get());
+
+		deviceContext->OMSetRenderTargets(1u, renderTargetView.GetAddressOf(), NULL);
+
+		deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
+		deviceContext->Draw((UINT)std::size(vertices), 0u);
 	}
 
 	Graphics::~Graphics()
