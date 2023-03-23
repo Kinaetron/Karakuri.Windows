@@ -27,9 +27,9 @@ public:
 	}
 
 	void Draw() override
-	{
+	{	
 		Game::Draw();
-		Graphics->Clear(Karakuri::Colour::CornflowerBlue().get());
+		Graphics->Clear(Karakuri::Colour::Black());
 		Graphics->Present();
 	}
 };
@@ -40,7 +40,7 @@ Karakuri::Game* Karakuri::CreateGame()
 
 	game->SetWidth(1920);
 	game->SetHeight(1080);
-	game->SetName(L"Pluckers");
+	game->SetName(L"Pluckers, gime that wet pepper extra wet extra crispy");
 	game->SetFrameRate(60);
 
 	return game;

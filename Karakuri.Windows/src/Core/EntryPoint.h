@@ -22,15 +22,20 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine
 
 	RegisterClass(&wc);
 
+	RECT windowRectangle = { 0, 0, static_cast<LONG>(game->GetWidth()), static_cast<LONG>(game->GetHeight()) };
+
+	long windowStyle = (WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX);
+	AdjustWindowRect(&windowRectangle, windowStyle, FALSE);
+
 	HWND hwnd = CreateWindowEx(
 		0,
 		CLASS_NAME,
 		game->GetName().c_str(),
-		(WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX),
+		windowStyle,
 		CW_USEDEFAULT,
 		CW_USEDEFAULT,
-		game->GetWidth(),
-		game->GetHeight(),
+		windowRectangle.right - windowRectangle.left,
+		windowRectangle.bottom - windowRectangle.top,
 		NULL,
 		NULL,
 		hInstance,

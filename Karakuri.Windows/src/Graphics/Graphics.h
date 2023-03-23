@@ -11,7 +11,7 @@ namespace Karakuri
 	public:
 		Graphics(HWND hwnd, int width, int height);
 		~Graphics();
-		void Clear(const Colour* colour);
+		void Clear(const Colour& colour);
 		void Present();
 
 	private:
