@@ -115,6 +115,7 @@ namespace Karakuri
 		const static Colour MediumPurple() { return Colour(0.576470613f, 0.439215720f, 0.858823597f, 1.000000000f); }
 		const static Colour MediumSeaGreen() { return Colour(0.235294133f, 0.701960802f, 0.443137288f, 1.000000000f); }
 		const static Colour MediumSlateBlue() { return Colour(0.482352972f, 0.407843173f, 0.933333397f, 1.000000000f); }
+		const static Colour MediumSpringGreen() { return Colour(0.000000000f, 0.980392218f, 0.603921592f, 1.000000000f); }
 		const static Colour MediumTurquoise() { return Colour(0.282352954f, 0.819607913f, 0.800000072f, 1.000000000f); }
 		const static Colour MediumVioletRed() { return Colour(0.780392230f, 0.082352944f, 0.521568656f, 1.000000000f); }
 		const static Colour MidnightBlue() { return Colour(0.098039225f, 0.098039225f, 0.439215720f, 1.000000000f); }
@@ -129,7 +130,7 @@ namespace Karakuri
 		const static Colour Orange() { return Colour(1.000000000f, 0.647058845f, 0.000000000f, 1.000000000f); }
 		const static Colour OrangeRed() { return Colour(1.000000000f, 0.270588249f, 0.000000000f, 1.000000000f); }
 		const static Colour Orchid() { return Colour(0.854902029f, 0.439215720f, 0.839215755f, 1.000000000f); }
-		const static Colour PaleGoldenrod() { return Colour(0.854902029f, 0.439215720f, 0.839215755f, 1.000000000f); }
+		const static Colour PaleGoldenrod() { return Colour(0.933333397f, 0.909803987f, 0.666666687f, 1.000000000f); }
 		const static Colour PaleGreen() { return Colour(0.596078455f, 0.984313786f, 0.596078455f, 1.000000000f); }
 		const static Colour PaleTurquoise() { return Colour(0.686274529f, 0.933333397f, 0.933333397f, 1.000000000f); }
 		const static Colour PaleVioletRed() { return Colour(0.858823597f, 0.439215720f, 0.576470613f, 1.000000000f); }
