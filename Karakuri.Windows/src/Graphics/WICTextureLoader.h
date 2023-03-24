@@ -25,7 +25,9 @@
 // https://go.microsoft.com/fwlink/?LinkId=248929
 //--------------------------------------------------------------------------------------
 
+#ifdef _MSC_VER
 #pragma once
+#endif
 
 #include <d3d11.h>
 

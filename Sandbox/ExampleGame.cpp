@@ -31,7 +31,7 @@ public:
 	{	
 		Game::Draw();
 		Graphics->Clear(Karakuri::Colour::Black());
-		Graphics->DrawTriangleTest();
+		Graphics->DrawTexturedQuadTest();
 		Graphics->Present();
 	}
 };

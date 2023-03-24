@@ -15,6 +15,7 @@ namespace Karakuri
 		void Clear(const Colour& colour);
 		void Present();
 		void DrawTriangleTest();
+		void DrawTexturedQuadTest();
 
 	private:
 		Microsoft::WRL::ComPtr<ID3D11Device> device;                                                                                                              

@@ -526,12 +526,6 @@ static HRESULT CreateTextureFromWIC(_In_ ID3D11Device* d3dDevice,
         }
         else
         {
-#if defined(_DEBUG) || defined(PROFILE)
-            tex->SetPrivateData(WKPDID_D3DDebugObjectName,
-                sizeof("WICTextureLoader") - 1,
-                "WICTextureLoader"
-            );
-#endif
             tex->Release();
         }
     }
@@ -593,24 +587,6 @@ HRESULT CreateWICTextureFromMemory(_In_ ID3D11Device* d3dDevice,
     if (FAILED(hr))
         return hr;
 
-#if defined(_DEBUG) || defined(PROFILE)
-    if (texture != 0 && *texture != 0)
-    {
-        (*texture)->SetPrivateData(WKPDID_D3DDebugObjectName,
-            sizeof("WICTextureLoader") - 1,
-            "WICTextureLoader"
-        );
-    }
-
-    if (textureView != 0 && *textureView != 0)
-    {
-        (*textureView)->SetPrivateData(WKPDID_D3DDebugObjectName,
-            sizeof("WICTextureLoader") - 1,
-            "WICTextureLoader"
-        );
-    }
-#endif
-
     return hr;
 }
 
@@ -645,47 +621,6 @@ HRESULT CreateWICTextureFromFile(_In_ ID3D11Device* d3dDevice,
     hr = CreateTextureFromWIC(d3dDevice, d3dContext, frame.Get(), texture, textureView, maxsize);
     if (FAILED(hr))
         return hr;
-
-#if defined(_DEBUG) || defined(PROFILE)
-    if (texture != 0 || textureView != 0)
-    {
-        CHAR strFileA[MAX_PATH];
-        WideCharToMultiByte(CP_ACP,
-            WC_NO_BEST_FIT_CHARS,
-            fileName,
-            -1,
-            strFileA,
-            MAX_PATH,
-            nullptr,
-            FALSE
-        );
-        const CHAR* pstrName = strrchr(strFileA, '\\');
-        if (!pstrName)
-        {
-            pstrName = strFileA;
-        }
-        else
-        {
-            pstrName++;
-        }
-
-        if (texture != 0 && *texture != 0)
-        {
-            (*texture)->SetPrivateData(WKPDID_D3DDebugObjectName,
-                static_cast<UINT>(strnlen_s(pstrName, MAX_PATH)),
-                pstrName
-            );
-        }
-
-        if (textureView != 0 && *textureView != 0)
-        {
-            (*textureView)->SetPrivateData(WKPDID_D3DDebugObjectName,
-                static_cast<UINT>(strnlen_s(pstrName, MAX_PATH)),
-                pstrName
-            );
-        }
-    }
-#endif
 
     return hr;
 }
