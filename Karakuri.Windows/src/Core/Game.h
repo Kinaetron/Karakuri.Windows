@@ -10,6 +10,8 @@ namespace Karakuri
 	{
 	public:
 		Game();
+		Game(const Game&) = delete;
+		Game& operator=(const Game&) = delete;
 		virtual ~Game();
 
 		void Loop();

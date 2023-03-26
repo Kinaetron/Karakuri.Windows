@@ -9,9 +9,14 @@ namespace Karakuri
 {
 	 class Graphics
 	{
+		 friend class Bindable;
+
 	public:
 		Graphics(HWND hwnd, int width, int height);
+		Graphics(const Graphics&) = delete;
+		Graphics& operator=(const Graphics&) = delete;
 		~Graphics();
+
 		void Clear(const Colour& colour);
 		void Present();
 		void DrawTriangleTest();

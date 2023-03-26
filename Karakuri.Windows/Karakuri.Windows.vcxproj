@@ -141,11 +141,23 @@
     <ClInclude Include="src\Core\Timer.h" />
     <ClInclude Include="src\Graphics\Colours.h" />
     <ClInclude Include="src\Graphics\Graphics.h" />
+    <ClInclude Include="src\Graphics\Resources\Bindable.h" />
+    <ClInclude Include="src\Graphics\Resources\IndexBuffer.h" />
+    <ClInclude Include="src\Graphics\Resources\PixelShader.h" />
+    <ClInclude Include="src\Graphics\Resources\Sampler.h" />
+    <ClInclude Include="src\Graphics\Resources\VertexBuffer.h" />
+    <ClInclude Include="src\Graphics\Resources\VertexShader.h" />
     <ClInclude Include="src\Graphics\WICTextureLoader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Game.cpp" />
     <ClCompile Include="src\Graphics\Graphics.cpp" />
+    <ClCompile Include="src\Graphics\Resources\Bindable.cpp" />
+    <ClCompile Include="src\Graphics\Resources\IndexBuffer.cpp" />
+    <ClCompile Include="src\Graphics\Resources\PixelShader.cpp" />
+    <ClCompile Include="src\Graphics\Resources\Sampler.cpp" />
+    <ClCompile Include="src\Graphics\Resources\VertexBuffer.cpp" />
+    <ClCompile Include="src\Graphics\Resources\VertexShader.cpp" />
     <ClCompile Include="src\Graphics\WICTextureLoader.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

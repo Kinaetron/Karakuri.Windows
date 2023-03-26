@@ -1,8 +1,9 @@
 #include "Core/Game.h"
 #include "Core/EntryPoint.h"
 #include "Graphics/Colours.h"
-
+#include "Graphics/Resources/IndexBuffer.h"
 #include <memory>
+#include <vector>
 #include <iostream>
 
 class ExampleGame : public Karakuri::Game

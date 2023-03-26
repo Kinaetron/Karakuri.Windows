@@ -65,7 +65,7 @@ namespace Karakuri
 	void Graphics::DrawTriangleTest()
 	{
 		namespace wrl = Microsoft::WRL;
-		HRESULT hr;
+		HRESULT hr = {};
 
 		struct Vertex
 		{
@@ -136,7 +136,7 @@ namespace Karakuri
 	void Graphics::DrawTexturedQuadTest()
 	{
 		namespace wrl = Microsoft::WRL;
-		HRESULT hr;
+		HRESULT hr = {};
 
 		struct Vertex
 		{
@@ -174,7 +174,7 @@ namespace Karakuri
 
 		const unsigned short indices[] = {
 			0 , 1, 2, 0, 2, 3
-		};
+		};	
 
 		wrl::ComPtr<ID3D11Buffer> indexBuffer;
 
