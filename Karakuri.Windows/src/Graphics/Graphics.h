@@ -18,6 +18,8 @@ namespace Karakuri
 		~Graphics();
 
 		void Clear(const Colour& colour);
+		void Draw(unsigned int vertexCount, unsigned int vertexStart);
+		void DrawIndex(unsigned int indexCount, unsigned int indexStart);
 		void Present();
 		void DrawTriangleTest();
 		void DrawTexturedQuadTest();

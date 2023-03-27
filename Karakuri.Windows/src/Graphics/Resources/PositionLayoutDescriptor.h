@@ -3,7 +3,7 @@
 
 namespace Karakuri
 {
-	static class PositionLayoutDescriptor : public LayoutDescriptor
+	class PositionLayoutDescriptor : public LayoutDescriptor
 	{
 		PositionLayoutDescriptor()
 		{

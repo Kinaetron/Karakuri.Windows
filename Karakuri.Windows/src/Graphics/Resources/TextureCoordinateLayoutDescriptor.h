@@ -3,7 +3,7 @@
 
 namespace Karakuri
 {
-	static class TextureCoordinateLayoutDescriptor : public LayoutDescriptor
+	class TextureCoordinateLayoutDescriptor : public LayoutDescriptor
 	{
 		TextureCoordinateLayoutDescriptor()
 		{

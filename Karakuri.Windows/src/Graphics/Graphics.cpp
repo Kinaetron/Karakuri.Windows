@@ -62,6 +62,14 @@ namespace Karakuri
 		swapChain->Present(1u, 0u);
 	}
 
+	void Graphics::Draw(unsigned int vertexCount, unsigned int vertexStart) {
+		deviceContext->Draw(vertexCount, vertexStart);
+	}
+
+	void Graphics::DrawIndex(unsigned int indexCount, unsigned int indexStart) {
+		deviceContext->DrawIndexed(indexCount, indexStart, 0u);
+	}
+
 	void Graphics::DrawTriangleTest()
 	{
 		namespace wrl = Microsoft::WRL;
@@ -250,7 +258,6 @@ namespace Karakuri
 		deviceContext->Draw((UINT)std::size(vertices), 0u);
 
 		deviceContext->DrawIndexed(6, 0u, 0u);
-
 	}
 
 	Graphics::~Graphics()
