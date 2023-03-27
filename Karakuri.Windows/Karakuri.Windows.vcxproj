@@ -143,6 +143,10 @@
     <ClInclude Include="src\Graphics\Graphics.h" />
     <ClInclude Include="src\Graphics\Resources\Bindable.h" />
     <ClInclude Include="src\Graphics\Resources\IndexBuffer.h" />
+    <ClInclude Include="src\Graphics\Resources\InputLayout.h" />
+    <ClInclude Include="src\Graphics\Resources\LayoutDescriptor.h" />
+    <ClInclude Include="src\Graphics\Resources\PositionLayoutDescriptor.h" />
+    <ClInclude Include="src\Graphics\Resources\TextureCoordinateLayoutDescriptor.h" />
     <ClInclude Include="src\Graphics\Resources\PixelShader.h" />
     <ClInclude Include="src\Graphics\Resources\Sampler.h" />
     <ClInclude Include="src\Graphics\Resources\VertexBuffer.h" />
@@ -154,6 +158,7 @@
     <ClCompile Include="src\Graphics\Graphics.cpp" />
     <ClCompile Include="src\Graphics\Resources\Bindable.cpp" />
     <ClCompile Include="src\Graphics\Resources\IndexBuffer.cpp" />
+    <ClCompile Include="src\Graphics\Resources\InputLayout.cpp" />
     <ClCompile Include="src\Graphics\Resources\PixelShader.cpp" />
     <ClCompile Include="src\Graphics\Resources\Sampler.cpp" />
     <ClCompile Include="src\Graphics\Resources\VertexBuffer.cpp" />
