@@ -2,7 +2,7 @@
 
 namespace Karakuri
 {
-	PixelShader::PixelShader(Graphics& graphics, const std::wstring& path)
+	PixelShader::PixelShader(Graphics* graphics, const std::wstring& path)
 	{
 		D3DReadFileToBlob(path.c_str(), &bytecodeBlob);
 
@@ -13,7 +13,7 @@ namespace Karakuri
 			&pixelShader);
 	}
 
-	void PixelShader::Bind(Graphics& graphics) {
+	void PixelShader::Bind(Graphics* graphics) {
 		GetContext(graphics)->PSSetShader(pixelShader.Get(), nullptr, 0u);
 	}
 

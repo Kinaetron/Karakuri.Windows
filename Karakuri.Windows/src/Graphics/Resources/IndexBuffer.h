@@ -7,8 +7,8 @@ namespace Karakuri
 	class IndexBuffer : public Bindable
 	{
 	public:
-		IndexBuffer(Graphics& graphics, const std::vector<unsigned short>& indices);
-		void Bind(Graphics& graphics) override;
+		IndexBuffer(Graphics* graphics, const std::vector<unsigned short>& indices);
+		void Bind(Graphics* graphics) override;
 		IndexBuffer(const IndexBuffer&) = delete;
 		IndexBuffer& operator=(const IndexBuffer&) = delete;
 		UINT GetCount() const;

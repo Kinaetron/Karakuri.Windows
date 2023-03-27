@@ -5,6 +5,7 @@ namespace Karakuri
 {
 	class PositionLayoutDescriptor : public LayoutDescriptor
 	{
+	public:
 		PositionLayoutDescriptor()
 		{
 			semanticName = "Position";

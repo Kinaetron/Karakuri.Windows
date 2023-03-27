@@ -2,7 +2,7 @@
 
 namespace Karakuri
 {
-	Sampler::Sampler(Graphics& graphics)
+	Sampler::Sampler(Graphics* graphics)
 	{
 		D3D11_SAMPLER_DESC samplerDescriptor = {};
 		samplerDescriptor.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;
@@ -13,7 +13,7 @@ namespace Karakuri
 		GetDevice(graphics)->CreateSamplerState(&samplerDescriptor, &sampler);
 	}
 
-	void Sampler::Bind(Graphics& graphics) {
+	void Sampler::Bind(Graphics* graphics) {
 		GetContext(graphics)->PSSetSamplers(0, 1, sampler.GetAddressOf());
 	}
 }

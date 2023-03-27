@@ -5,6 +5,7 @@ namespace Karakuri
 {
 	class TextureCoordinateLayoutDescriptor : public LayoutDescriptor
 	{
+	public:
 		TextureCoordinateLayoutDescriptor()
 		{
 			semanticName = "TexCoord";

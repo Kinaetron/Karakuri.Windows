@@ -2,7 +2,7 @@
 
 namespace Karakuri
 {
-	InputLayout::InputLayout(Graphics& graphics, const std::vector<LayoutDescriptor>& layout, VertexShader& vertexShader)
+	InputLayout::InputLayout(Graphics* graphics, const std::vector<LayoutDescriptor>& layout, VertexShader& vertexShader)
 	{
 		std::vector<D3D11_INPUT_ELEMENT_DESC> internalLayout = {};
 
@@ -18,7 +18,7 @@ namespace Karakuri
 			&inputLayout);
 	}
 
-	void InputLayout::Bind(Graphics& graphics) {
+	void InputLayout::Bind(Graphics* graphics) {
 		GetContext(graphics)->IASetInputLayout(inputLayout.Get());
 	}
 }

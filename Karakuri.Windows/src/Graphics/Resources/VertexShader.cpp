@@ -2,7 +2,7 @@
 
 namespace Karakuri
 {
-	VertexShader::VertexShader(Graphics& graphics, const std::wstring& path)
+	VertexShader::VertexShader(Graphics* graphics, const std::wstring& path)
 	{
 		D3DReadFileToBlob(path.c_str(), &bytecodeBlob);
 
@@ -13,7 +13,7 @@ namespace Karakuri
 			&vertexShader);
 	}
 
-	void VertexShader::Bind(Graphics& graphics) {
+	void VertexShader::Bind(Graphics* graphics) {
 		GetContext(graphics)->VSSetShader(vertexShader.Get(), nullptr, 0u);
 	}
 

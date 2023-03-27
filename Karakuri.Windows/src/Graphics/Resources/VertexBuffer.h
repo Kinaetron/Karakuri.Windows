@@ -8,7 +8,7 @@ namespace Karakuri
 	{
 	public:
 		template<class V>
-		VertexBuffer(Graphics& graphics, const std::vector<V> vertices)
+		VertexBuffer(Graphics* graphics, const std::vector<V> vertices)
 		{
 			D3D11_BUFFER_DESC bufferDescriptor = {};
 			bufferDescriptor.BindFlags = D3D11_BIND_VERTEX_BUFFER;
@@ -23,7 +23,7 @@ namespace Karakuri
 
 			GetDevice(graphics)->CreateBuffer(&bufferDescriptor, &vertexSubresourceData, &vertexBuffer);
 		}
-		void Bind(Graphics& graphics) override;
+		void Bind(Graphics* graphics) override;
 
 	private:
 		UINT stride;

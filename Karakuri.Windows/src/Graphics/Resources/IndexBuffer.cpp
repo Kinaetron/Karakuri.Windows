@@ -2,7 +2,7 @@
 
 namespace Karakuri
 {
-	IndexBuffer::IndexBuffer(Graphics& graphics, const std::vector<unsigned short>& indices) 
+	IndexBuffer::IndexBuffer(Graphics* graphics, const std::vector<unsigned short>& indices) 
 	{
 		count = (UINT)indices.size();
 
@@ -20,7 +20,7 @@ namespace Karakuri
 		GetDevice(graphics)->CreateBuffer(&indexBufferDescriptor, &indexSubresourceData, &indexBuffer);
 	}
 
-	void IndexBuffer::Bind(Graphics& graphics) {
+	void IndexBuffer::Bind(Graphics* graphics) {
 		GetContext(graphics)->IASetIndexBuffer(indexBuffer.Get(), DXGI_FORMAT_R16_UINT, 0u);
 	}
 

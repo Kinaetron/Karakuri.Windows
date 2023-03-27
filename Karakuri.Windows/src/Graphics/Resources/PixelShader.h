@@ -7,8 +7,8 @@ namespace Karakuri
 	class PixelShader : public Bindable
 	{
 	public:
-		PixelShader(Graphics& graphics, const std::wstring& path);
-		void Bind(Graphics& graphics) override;
+		PixelShader(Graphics* graphics, const std::wstring& path);
+		void Bind(Graphics* graphics) override;
 		ID3DBlob* GetBytecode() const;
 	
 	private:

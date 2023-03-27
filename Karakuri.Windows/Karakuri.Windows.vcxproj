@@ -146,6 +146,7 @@
     <ClInclude Include="src\Graphics\Resources\InputLayout.h" />
     <ClInclude Include="src\Graphics\Resources\LayoutDescriptor.h" />
     <ClInclude Include="src\Graphics\Resources\PositionLayoutDescriptor.h" />
+    <ClInclude Include="src\Graphics\Resources\Texture.h" />
     <ClInclude Include="src\Graphics\Resources\TextureCoordinateLayoutDescriptor.h" />
     <ClInclude Include="src\Graphics\Resources\PixelShader.h" />
     <ClInclude Include="src\Graphics\Resources\Sampler.h" />
@@ -161,6 +162,7 @@
     <ClCompile Include="src\Graphics\Resources\InputLayout.cpp" />
     <ClCompile Include="src\Graphics\Resources\PixelShader.cpp" />
     <ClCompile Include="src\Graphics\Resources\Sampler.cpp" />
+    <ClCompile Include="src\Graphics\Resources\Texture.cpp" />
     <ClCompile Include="src\Graphics\Resources\VertexBuffer.cpp" />
     <ClCompile Include="src\Graphics\Resources\VertexShader.cpp" />
     <ClCompile Include="src\Graphics\WICTextureLoader.cpp" />

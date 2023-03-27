@@ -62,11 +62,19 @@ namespace Karakuri
 		swapChain->Present(1u, 0u);
 	}
 
-	void Graphics::Draw(unsigned int vertexCount, unsigned int vertexStart) {
+	void Graphics::Draw(unsigned int vertexCount, unsigned int vertexStart) 
+	{
+		deviceContext->OMSetRenderTargets(1u, renderTargetView.GetAddressOf(), NULL);
+		deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
 		deviceContext->Draw(vertexCount, vertexStart);
 	}
 
-	void Graphics::DrawIndex(unsigned int indexCount, unsigned int indexStart) {
+	void Graphics::DrawIndex(unsigned int indexCount, unsigned int indexStart) 
+	{
+		deviceContext->OMSetRenderTargets(1u, renderTargetView.GetAddressOf(), NULL);
+		deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
 		deviceContext->DrawIndexed(indexCount, indexStart, 0u);
 	}
 
