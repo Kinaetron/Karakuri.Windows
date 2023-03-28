@@ -24,8 +24,6 @@ namespace Karakuri
 		void Draw(unsigned int vertexCount, unsigned int vertexStart);
 		void DrawIndex(unsigned int indexCount, unsigned int indexStart);
 		void Present();
-		void DrawTriangleTest();
-		void DrawTexturedQuadTest();
 
 	private:
 		unsigned int width;
