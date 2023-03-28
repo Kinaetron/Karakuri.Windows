@@ -263,8 +263,6 @@ namespace Karakuri
 
 		deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
-		deviceContext->Draw((UINT)std::size(vertices), 0u);
-
 		deviceContext->DrawIndexed(6, 0u, 0u);
 	}
 

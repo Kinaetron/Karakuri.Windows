@@ -4,12 +4,15 @@
 
 namespace Karakuri
 {
+	
 	class VertexBuffer : public Bindable
 	{
 	public:
 		template<class V>
 		VertexBuffer(Graphics* graphics, const std::vector<V> vertices)
 		{
+			stride = sizeof(V);
+
 			D3D11_BUFFER_DESC bufferDescriptor = {};
 			bufferDescriptor.BindFlags = D3D11_BIND_VERTEX_BUFFER;
 			bufferDescriptor.Usage = D3D11_USAGE_DEFAULT;

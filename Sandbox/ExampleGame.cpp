@@ -39,7 +39,7 @@ public:
 
 	void Draw() override
 	{	
-		class Vertex
+		struct Vertex
 		{
 			float x;
 			float y;
@@ -49,47 +49,47 @@ public:
 
 		Game::Draw();
 		Graphics->Clear(Karakuri::Colour::Black());
-		Graphics->DrawTexturedQuadTest();
+		//Graphics->DrawTexturedQuadTest();
 
-		//const std::vector<Vertex> vertices =
-		//{
-		//	{  -0.5f,0.5f, 0.0f, 0.0f }, // top left
-		//	{  0.5f, 0.5f, 1.0f, 0.0f }, // top right
-		//	{  0.5f,-0.5f, 1.0f, 1.0f }, // bottom right
-		//	{ -0.5f,-0.5f, 0.0f, 1.0f }, // bottom left
-		//};
+		const std::vector<Vertex> vertices =
+		{
+			{  -0.5f,0.5f, 0.0f, 0.0f }, // top left
+			{  0.5f, 0.5f, 1.0f, 0.0f }, // top right
+			{  0.5f,-0.5f, 1.0f, 1.0f }, // bottom right
+			{ -0.5f,-0.5f, 0.0f, 1.0f }, // bottom left
+		};
 
-		//auto vertexBuffer = Karakuri::VertexBuffer::VertexBuffer<Vertex>(Graphics.get(), vertices);
-		//vertexBuffer.Bind(Graphics.get());
+		auto vertexBuffer = Karakuri::VertexBuffer(Graphics.get(), vertices);
+		vertexBuffer.Bind(Graphics.get());
 
-		//const std::vector<unsigned short> indices = {
-		//	0 , 1, 2, 0, 2, 3
-		//};
+		const std::vector<unsigned short> indices = {
+			0 , 1, 2, 0, 2, 3
+		};
 
-		//auto indexBuffer = Karakuri::IndexBuffer(Graphics.get(), indices);
-		//indexBuffer.Bind(Graphics.get());
+		auto indexBuffer = Karakuri::IndexBuffer(Graphics.get(), indices);
+		indexBuffer.Bind(Graphics.get());
 
-		//auto sampler = Karakuri::Sampler(Graphics.get());
-		//sampler.Bind(Graphics.get());
+		auto sampler = Karakuri::Sampler(Graphics.get());
+		sampler.Bind(Graphics.get());
 
-		//auto texture = Karakuri::Texture(Graphics.get(), L"test.jpg");
-		//texture.Bind(Graphics.get());
+		auto texture = Karakuri::Texture(Graphics.get(), L"test.jpg");
+		texture.Bind(Graphics.get());
 
-		//auto pixelShader = Karakuri::PixelShader(Graphics.get(), L"PixelTextureShader.cso");
-		//pixelShader.Bind(Graphics.get());
+		auto pixelShader = Karakuri::PixelShader(Graphics.get(), L"PixelTextureShader.cso");
+		pixelShader.Bind(Graphics.get());
 
-		//auto vertexShader = Karakuri::VertexShader(Graphics.get(), L"VertexTextureShader.cso");
-		//vertexShader.Bind(Graphics.get());
+		auto vertexShader = Karakuri::VertexShader(Graphics.get(), L"VertexTextureShader.cso");
+		vertexShader.Bind(Graphics.get());
 
-		//auto positionLayout = Karakuri::PositionLayoutDescriptor();
-		//auto texCoordLayout = Karakuri::TextureCoordinateLayoutDescriptor();
+		auto positionLayout = Karakuri::PositionLayoutDescriptor();
+		auto texCoordLayout = Karakuri::TextureCoordinateLayoutDescriptor();
 
-		//auto layoutDescriptor = std::vector<Karakuri::LayoutDescriptor>() = { positionLayout, texCoordLayout };
+		auto layoutDescriptor = std::vector<Karakuri::LayoutDescriptor>() = { positionLayout, texCoordLayout };
 
-		//auto layout = Karakuri::InputLayout(Graphics.get(), layoutDescriptor, vertexShader);
-		//layout.Bind(Graphics.get());
+		auto layout = Karakuri::InputLayout(Graphics.get(), layoutDescriptor, vertexShader);
+		layout.Bind(Graphics.get());
 
-		//Graphics->DrawIndex(6, 0u);
+		Graphics->DrawIndex(6, 0u);
 		Graphics->Present();
 	}
 };
