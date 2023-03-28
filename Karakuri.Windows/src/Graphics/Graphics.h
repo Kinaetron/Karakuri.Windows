@@ -12,10 +12,13 @@ namespace Karakuri
 		 friend class Bindable;
 
 	public:
-		Graphics(HWND hwnd, int width, int height);
+		Graphics(HWND hwnd, unsigned int width, unsigned int height);
 		Graphics(const Graphics&) = delete;
 		Graphics& operator=(const Graphics&) = delete;
 		~Graphics();
+
+		const unsigned int Width() const { return width; }
+		const unsigned int Height() const { return height; }
 
 		void Clear(const Colour& colour);
 		void Draw(unsigned int vertexCount, unsigned int vertexStart);
@@ -25,6 +28,8 @@ namespace Karakuri
 		void DrawTexturedQuadTest();
 
 	private:
+		unsigned int width;
+		unsigned int height;
 		Microsoft::WRL::ComPtr<ID3D11Device> device;                                                                                                              
 		Microsoft::WRL::ComPtr<IDXGISwapChain> swapChain;
 		Microsoft::WRL::ComPtr<ID3D11DeviceContext> deviceContext;

@@ -48,8 +48,7 @@ public:
 		};
 
 		Game::Draw();
-		Graphics->Clear(Karakuri::Colour::Black());
-		//Graphics->DrawTexturedQuadTest();
+		Graphics->Clear(Karakuri::Colour::DarkMagenta());
 
 		const std::vector<Vertex> vertices =
 		{
@@ -84,7 +83,7 @@ public:
 		auto positionLayout = Karakuri::PositionLayoutDescriptor();
 		auto texCoordLayout = Karakuri::TextureCoordinateLayoutDescriptor();
 
-		auto layoutDescriptor = std::vector<Karakuri::LayoutDescriptor>() = { positionLayout, texCoordLayout };
+		 const std::vector<Karakuri::LayoutDescriptor> layoutDescriptor = { positionLayout, texCoordLayout };
 
 		auto layout = Karakuri::InputLayout(Graphics.get(), layoutDescriptor, vertexShader);
 		layout.Bind(Graphics.get());

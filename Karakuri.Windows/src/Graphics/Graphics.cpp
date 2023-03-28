@@ -6,8 +6,11 @@
 
 namespace Karakuri
 {
-	Graphics::Graphics(HWND hwnd, int width, int height)
+	Graphics::Graphics(HWND hwnd, unsigned int width, unsigned int height)
 	{
+		this->width = width;
+		this->height = height;
+
 		DXGI_SWAP_CHAIN_DESC swapChainDescription = {};
 		swapChainDescription.BufferDesc.Width = width;
 		swapChainDescription.BufferDesc.Height = height;

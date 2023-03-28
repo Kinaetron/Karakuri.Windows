@@ -153,6 +153,7 @@
     <ClInclude Include="src\Graphics\Resources\VertexBuffer.h" />
     <ClInclude Include="src\Graphics\Resources\VertexShader.h" />
     <ClInclude Include="src\Graphics\WICTextureLoader.h" />
+    <ClInclude Include="src\Maths\SimpleMath.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Game.cpp" />
@@ -166,6 +167,10 @@
     <ClCompile Include="src\Graphics\Resources\VertexBuffer.cpp" />
     <ClCompile Include="src\Graphics\Resources\VertexShader.cpp" />
     <ClCompile Include="src\Graphics\WICTextureLoader.cpp" />
+    <ClCompile Include="src\Maths\SimpleMath.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\Maths\SimpleMath.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

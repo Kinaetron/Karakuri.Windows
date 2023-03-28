@@ -69,6 +69,9 @@
     <ClInclude Include="src\Graphics\Resources\Texture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Maths\SimpleMath.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Game.cpp">
@@ -104,5 +107,13 @@
     <ClCompile Include="src\Graphics\Resources\Texture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Maths\SimpleMath.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\Maths\SimpleMath.inl">
+      <Filter>Header Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

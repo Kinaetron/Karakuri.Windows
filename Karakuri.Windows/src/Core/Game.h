@@ -19,24 +19,23 @@ namespace Karakuri
 		virtual void Update();
 		virtual void Draw();
 
-		void SetWidth(int width) { this->width = width; }
-		void SetHeight(int height) { this->height = height; }
+		void SetWidth(unsigned int width) { this->width = width; }
+		void SetHeight(unsigned int height) { this->height = height; }
 		void SetName(const std::wstring& name) { this->name = name; }
-		void SetFrameRate(int frameRate) { this->timer.SetTargetFrameRate(frameRate); }
+		void SetFrameRate(unsigned int frameRate) { this->timer.SetTargetFrameRate(frameRate); }
 
-		const int GetWidth() const { return width; }
-		const int GetHeight() const { return height; }
+		const unsigned int GetWidth() const { return width; }
+		const unsigned int GetHeight() const { return height; }
 		const std::wstring& GetName() const { return name; }
 
 	protected:
 		Timer timer;
-		int width = 1920;
-		int height = 1080;
+		unsigned int width = 1920;
+		unsigned int height = 1080;
 		std::wstring name = L"Karakuri Game";
 
 	public:
 		std::unique_ptr<Graphics> Graphics;
-
 	};
 	// To be defined in client
 	Game* CreateGame();
