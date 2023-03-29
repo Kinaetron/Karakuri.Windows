@@ -57,8 +57,8 @@ namespace Karakuri
 		deviceContext->RSSetViewports(1u, &viewPort);	
 	}
 
-	void Graphics::Clear(const Colour& colour) {
-		deviceContext->ClearRenderTargetView(renderTargetView.Get(), colour.GetColour());	
+	void Graphics::Clear(const DirectX::SimpleMath::Color& colour) {
+		deviceContext->ClearRenderTargetView(renderTargetView.Get(), colour);	
 	}
 
 	void Karakuri::Graphics::Present() {

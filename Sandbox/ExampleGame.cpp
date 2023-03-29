@@ -1,6 +1,6 @@
 #include "Core/Game.h"
 #include "Core/EntryPoint.h"
-#include "Graphics/Colours.h"
+#include "Graphics/Colors.h"
 #include "Graphics/Resources/VertexBuffer.h"
 #include "Graphics/Resources/IndexBuffer.h"
 #include "Graphics/Resources/Sampler.h"
@@ -48,7 +48,7 @@ public:
 		};
 
 		Game::Draw();
-		Graphics->Clear(Karakuri::Colour::DarkMagenta());
+		Graphics->Clear(Karakuri::Colors::Crimson);
 
 		const std::vector<Vertex> vertices =
 		{

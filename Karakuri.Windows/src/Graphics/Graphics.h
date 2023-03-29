@@ -1,6 +1,6 @@
 #pragma once
 #include "../Core/SystemIncludes.h"
-#include "Colours.h"
+#include "../Maths/SimpleMath.h"
 #include <wrl.h>
 #include <d3d11.h>
 #include <d3dcompiler.h>
@@ -20,7 +20,7 @@ namespace Karakuri
 		const unsigned int Width() const { return width; }
 		const unsigned int Height() const { return height; }
 
-		void Clear(const Colour& colour);
+		void Clear(const DirectX::SimpleMath::Color& colour);
 		void Draw(unsigned int vertexCount, unsigned int vertexStart);
 		void DrawIndex(unsigned int indexCount, unsigned int indexStart);
 		void Present();
