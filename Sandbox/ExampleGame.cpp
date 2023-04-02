@@ -1,97 +1,38 @@
-#include "Core/Game.h"
-#include "Core/EntryPoint.h"
+#include "ExampleGame.h"
 #include "Graphics/Colors.h"
-#include "Graphics/Resources/VertexBuffer.h"
-#include "Graphics/Resources/IndexBuffer.h"
-#include "Graphics/Resources/Sampler.h"
-#include "Graphics/Resources/Texture.h"
-#include "Graphics/Resources/PixelShader.h"
-#include "Graphics/Resources/VertexShader.h"
-#include "Graphics/Resources/LayoutDescriptor.h"
-#include "Graphics/Resources/InputLayout.h"
-#include "Graphics/Resources/PositionLayoutDescriptor.h"
-#include "Graphics/Resources/TextureCoordinateLayoutDescriptor.h"
-#include <memory>
-#include <vector>
-#include <iostream>
+#include "Core/EntryPoint.h"
 
-class ExampleGame : public Karakuri::Game
+struct Vertex
 {
-public:
-	ExampleGame() 
-	{
-	}
-
-	~ExampleGame() 
-	{
-		Game::~Game();
-	}
-
-	void Initalize() override
-	{
-		Game::Initalize();
-	}
-
-	void Update() override
-	{
-		Game::Update();
-	}
-
-	void Draw() override
-	{	
-		struct Vertex
-		{
-			float x;
-			float y;
-			float u;
-			float v;
-		};
-
-		Game::Draw();
-		Graphics->Clear(Karakuri::Colors::Crimson);
-
-		const std::vector<Vertex> vertices =
-		{
-			{  -0.5f,0.5f, 0.0f, 0.0f }, // top left
-			{  0.5f, 0.5f, 1.0f, 0.0f }, // top right
-			{  0.5f,-0.5f, 1.0f, 1.0f }, // bottom right
-			{ -0.5f,-0.5f, 0.0f, 1.0f }, // bottom left
-		};
-
-		auto vertexBuffer = Karakuri::VertexBuffer(Graphics.get(), vertices);
-		vertexBuffer.Bind(Graphics.get());
-
-		const std::vector<unsigned short> indices = {
-			0 , 1, 2, 0, 2, 3
-		};
-
-		auto indexBuffer = Karakuri::IndexBuffer(Graphics.get(), indices);
-		indexBuffer.Bind(Graphics.get());
-
-		auto sampler = Karakuri::Sampler(Graphics.get());
-		sampler.Bind(Graphics.get());
-
-		auto texture = Karakuri::Texture(Graphics.get(), L"test.jpg");
-		texture.Bind(Graphics.get());
-
-		auto pixelShader = Karakuri::PixelShader(Graphics.get(), L"PixelTextureShader.cso");
-		pixelShader.Bind(Graphics.get());
-
-		auto vertexShader = Karakuri::VertexShader(Graphics.get(), L"VertexTextureShader.cso");
-		vertexShader.Bind(Graphics.get());
-
-		auto positionLayout = Karakuri::PositionLayoutDescriptor();
-		auto texCoordLayout = Karakuri::TextureCoordinateLayoutDescriptor();
-
-		 const std::vector<Karakuri::LayoutDescriptor> layoutDescriptor = { positionLayout, texCoordLayout };
-
-		auto layout = Karakuri::InputLayout(Graphics.get(), layoutDescriptor, vertexShader);
-		layout.Bind(Graphics.get());
-
-		Graphics->DrawIndex(6, 0u);
-		Graphics->Present();
-	}
+	float x;
+	float y;
+	float u;
+	float v;
 };
+
+ExampleGame::ExampleGame() { }
+
+ExampleGame::~ExampleGame() { }
+
+void ExampleGame::Initalize()
+{
+	renderer = Karakuri::SpriteRenderer(Graphics);
+}
+
+void ExampleGame::Update()
+{
+}
+
+void ExampleGame::Draw()
+{
+
+	auto texture = Karakuri::Texture(Graphics, L"test.jpg");
+
+	Graphics->Clear(Karakuri::Colors::CornflowerBlue);
+	renderer.Draw(Graphics, texture, DirectX::SimpleMath::Vector2{ 500, 200 }, DirectX::SimpleMath::Vector2{ 100.0f, 100.0f }, 0.0f, Karakuri::Colors::White);
+	Graphics->Present();
+}
+
 
 Karakuri::Game* Karakuri::CreateGame() 
 {

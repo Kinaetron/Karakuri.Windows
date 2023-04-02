@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -142,6 +142,7 @@
     <ClInclude Include="src\Graphics\Colors.h" />
     <ClInclude Include="src\Graphics\Graphics.h" />
     <ClInclude Include="src\Graphics\Resources\Bindable.h" />
+    <ClInclude Include="src\Graphics\Resources\ConstantBuffers.h" />
     <ClInclude Include="src\Graphics\Resources\IndexBuffer.h" />
     <ClInclude Include="src\Graphics\Resources\InputLayout.h" />
     <ClInclude Include="src\Graphics\Resources\LayoutDescriptor.h" />
@@ -152,6 +153,7 @@
     <ClInclude Include="src\Graphics\Resources\Sampler.h" />
     <ClInclude Include="src\Graphics\Resources\VertexBuffer.h" />
     <ClInclude Include="src\Graphics\Resources\VertexShader.h" />
+    <ClInclude Include="src\Graphics\SpriteRenderer\SpriteRenderer.h" />
     <ClInclude Include="src\Graphics\WICTextureLoader.h" />
     <ClInclude Include="src\Maths\SimpleMath.h" />
   </ItemGroup>
@@ -166,11 +168,42 @@
     <ClCompile Include="src\Graphics\Resources\Texture.cpp" />
     <ClCompile Include="src\Graphics\Resources\VertexBuffer.cpp" />
     <ClCompile Include="src\Graphics\Resources\VertexShader.cpp" />
+    <ClCompile Include="src\Graphics\SpriteRenderer\SpriteRenderer.cpp" />
     <ClCompile Include="src\Graphics\WICTextureLoader.cpp" />
     <ClCompile Include="src\Maths\SimpleMath.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Maths\SimpleMath.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="src\Graphics\SpriteRenderer\PixelRendererVertexShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">4.0</ShaderModel>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">4.0</ShaderModel>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">4.0</ShaderModel>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">4.0</ShaderModel>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="src\Graphics\SpriteRenderer\SpriteRendererPixelShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">4.0</ShaderModel>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">4.0</ShaderModel>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">4.0</ShaderModel>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">4.0</ShaderModel>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

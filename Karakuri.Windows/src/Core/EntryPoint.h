@@ -46,8 +46,8 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine
 		return 0;
 	}
 
+	game->Graphics = new Karakuri::Graphics(hwnd, game->GetWidth(), game->GetHeight());
 	game->Initalize();
-	game->Graphics = std::make_unique<Karakuri::Graphics>(hwnd, game->GetWidth(), game->GetHeight());
 
 	ShowWindow(hwnd, nCmdShow);
 

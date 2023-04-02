@@ -35,7 +35,7 @@ namespace Karakuri
 		std::wstring name = L"Karakuri Game";
 
 	public:
-		std::unique_ptr<Graphics> Graphics;
+		Graphics* Graphics;
 	};
 	// To be defined in client
 	Game* CreateGame();

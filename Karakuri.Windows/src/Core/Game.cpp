@@ -2,8 +2,14 @@
 
 namespace Karakuri
 {
-	Game::Game() { }
-	Game::~Game() { }
+	Game::Game() 
+	{
+		this->Graphics = NULL;
+	}
+	Game::~Game() 
+	{
+		delete Graphics;
+	}
 
 
 	void Game::Loop()

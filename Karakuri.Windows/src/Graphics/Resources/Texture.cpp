@@ -5,7 +5,7 @@ namespace Karakuri
 {
 	Texture::Texture(Graphics* graphics, const std::wstring& path)
 	{
-		CreateWICTextureFromFile(
+		auto reuslt = CreateWICTextureFromFile(
 			GetDevice(graphics),
 			GetContext(graphics),
 			path.c_str(),

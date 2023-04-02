@@ -61,8 +61,9 @@ namespace Karakuri
 		deviceContext->ClearRenderTargetView(renderTargetView.Get(), colour);	
 	}
 
-	void Karakuri::Graphics::Present() {
-		swapChain->Present(1u, 0u);
+	void Karakuri::Graphics::Present() 
+	{
+		auto something = swapChain->Present(1u, 0u);
 	}
 
 	void Graphics::Draw(unsigned int vertexCount, unsigned int vertexStart) 

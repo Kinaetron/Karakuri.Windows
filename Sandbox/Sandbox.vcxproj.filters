@@ -24,5 +24,12 @@
     <FxCompile Include="VertexShader.hlsl" />
     <FxCompile Include="VertexTextureShader.hlsl" />
     <FxCompile Include="PixelTextureShader.hlsl" />
+    <FxCompile Include="PixelRendererVertexShader.hlsl" />
+    <FxCompile Include="SpriteRendererPixelShader.hlsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ExampleGame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
