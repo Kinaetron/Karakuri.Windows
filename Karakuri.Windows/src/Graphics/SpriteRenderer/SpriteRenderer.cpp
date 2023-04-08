@@ -16,12 +16,11 @@ namespace Karakuri
 {
 	SpriteRenderer::SpriteRenderer(Graphics* const graphics)
 	{
-
 		if (graphics == NULL) {
 			return;
 		}
 
-		projection = DirectX::SimpleMath::Matrix::CreateOrthographic(static_cast<float>(graphics->Width()), static_cast<float>(graphics->Height()), -1.0f, 1.0f);
+		projection = DirectX::SimpleMath::Matrix::CreateOrthographicOffCenter(0.0f, static_cast<float>(graphics->Width()), static_cast<float>(graphics->Height()), 0.0f, -1.0f, 1.0f);
 
 		const std::vector<Vertex> vertices =
 		{
@@ -41,14 +40,14 @@ namespace Karakuri
 		auto indexBuffer = Karakuri::IndexBuffer(graphics, indices);
 		indexBuffer.Bind(graphics);
 
-		auto sampler = Karakuri::Sampler(graphics);
-		sampler.Bind(graphics);
-
 		auto pixelShader = PixelShader(graphics, L"SpriteRendererPixelShader.cso");
 		pixelShader.Bind(graphics);
 
 		auto vertexShader = VertexShader(graphics, L"PixelRendererVertexShader.cso");
 		vertexShader.Bind(graphics);
+
+		auto sampler = Karakuri::Sampler(graphics);
+		sampler.Bind(graphics);
 
 		auto positionLayout = PositionLayoutDescriptor();
 		auto texCoordLayout = TextureCoordinateLayoutDescriptor();
@@ -63,11 +62,15 @@ namespace Karakuri
 	{
 		texture.Bind(graphics);
 
-		auto model = DirectX::SimpleMath::Matrix::CreateTranslation(DirectX::SimpleMath::Vector3(position.x, position.y, 0.0f));
-		model.Translation(DirectX::SimpleMath::Vector3(0.5f * size.x, 0.5f * size.y, 0.0f));
-		model = model.CreateRotationZ(rotate);
-		model.Translation(DirectX::SimpleMath::Vector3(-0.5f * size.x, -0.5f * size.y, 0.0f));
-		model = model.CreateScale(DirectX::SimpleMath::Vector3(size.x, size.y, 1.0f));
+		auto model = DirectX::SimpleMath::Matrix::Identity;
+
+		model = DirectX::SimpleMath::Matrix::CreateTranslation(DirectX::SimpleMath::Vector3(position.x, position.y, 0.0f)) * model;
+
+		model = DirectX::SimpleMath::Matrix::CreateTranslation(DirectX::SimpleMath::Vector3(size.x * 0.5f, size.y * 0.5f, 0.0f)) * model;
+		model = DirectX::SimpleMath::Matrix::CreateRotationZ(rotate) * model;
+		model = DirectX::SimpleMath::Matrix::CreateTranslation(DirectX::SimpleMath::Vector3(size.x * -0.5f, size.y * -0.5f, 0.0f)) * model;
+
+		model = DirectX::SimpleMath::Matrix::CreateScale(size.x, size.y, 1.0f) * model;
 
 		auto vertexBufferConst = VertexConstantBufferSprite{ model, projection };
 		auto vertexConstantBuffer = VertexConstantBuffer<VertexConstantBufferSprite>(graphics, vertexBufferConst);

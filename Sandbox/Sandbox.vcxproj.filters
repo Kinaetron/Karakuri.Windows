@@ -20,10 +20,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="PixelShader.hlsl" />
-    <FxCompile Include="VertexShader.hlsl" />
-    <FxCompile Include="VertexTextureShader.hlsl" />
-    <FxCompile Include="PixelTextureShader.hlsl" />
     <FxCompile Include="PixelRendererVertexShader.hlsl" />
     <FxCompile Include="SpriteRendererPixelShader.hlsl" />
   </ItemGroup>
