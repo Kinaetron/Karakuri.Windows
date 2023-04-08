@@ -62,7 +62,7 @@ namespace Karakuri
 	}
 
 	void Karakuri::Graphics::Present() {
-		swapChain->Present(1u, 0u);
+		swapChain->Present(0u, 0u);
 	}
 
 	void Graphics::Draw(unsigned int vertexCount, unsigned int vertexStart) 

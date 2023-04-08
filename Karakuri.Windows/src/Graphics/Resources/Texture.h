@@ -7,6 +7,8 @@ namespace Karakuri
 	class Texture : public Bindable
 	{
 	public:
+		Texture() { };
+		~Texture() { };
 		Texture(Graphics* graphics, const std::wstring& path);
 		void Bind(Graphics* graphics);
 

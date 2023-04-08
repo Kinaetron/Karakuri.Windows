@@ -30,7 +30,6 @@ namespace Karakuri
 		SpriteRenderer(Graphics* graphics);
 		~SpriteRenderer();
 		void Draw(
-			Graphics* const graphics,
 			Texture& texture,
 			DirectX::SimpleMath::Vector2 position,
 			DirectX::SimpleMath::Vector2 size = { 10, 10 },
@@ -38,6 +37,7 @@ namespace Karakuri
 			DirectX::SimpleMath::Color color = Karakuri::Colors::White);
 
 	private:
+		Graphics* graphics;
 		DirectX::SimpleMath::Matrix projection;
 	};
 }

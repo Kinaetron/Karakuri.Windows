@@ -20,6 +20,8 @@ namespace Karakuri
 			return;
 		}
 
+		this->graphics = graphics;
+
 		projection = DirectX::SimpleMath::Matrix::CreateOrthographicOffCenter(0.0f, static_cast<float>(graphics->Width()), static_cast<float>(graphics->Height()), 0.0f, -1.0f, 1.0f);
 
 		const std::vector<Vertex> vertices =
@@ -58,7 +60,7 @@ namespace Karakuri
 		layout.Bind(graphics);
 	}
 
-	void SpriteRenderer::Draw(Graphics* const graphics, Texture& texture, DirectX::SimpleMath::Vector2 position, DirectX::SimpleMath::Vector2 size, float rotate, DirectX::SimpleMath::Color color)
+	void SpriteRenderer::Draw(Texture& texture, DirectX::SimpleMath::Vector2 position, DirectX::SimpleMath::Vector2 size, float rotate, DirectX::SimpleMath::Color color)
 	{
 		texture.Bind(graphics);
 

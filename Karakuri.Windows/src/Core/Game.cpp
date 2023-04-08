@@ -2,10 +2,7 @@
 
 namespace Karakuri
 {
-	Game::Game() 
-	{
-		this->Graphics = NULL;
-	}
+	Game::Game() { }
 	Game::~Game() 
 	{
 		delete Graphics;

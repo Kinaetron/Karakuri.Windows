@@ -46,10 +46,10 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine
 		return 0;
 	}
 
+	ShowWindow(hwnd, nCmdShow);
+
 	game->Graphics = new Karakuri::Graphics(hwnd, game->GetWidth(), game->GetHeight());
 	game->Initalize();
-
-	ShowWindow(hwnd, nCmdShow);
 
 	MSG msg = {};
 	while (msg.message != WM_QUIT)
