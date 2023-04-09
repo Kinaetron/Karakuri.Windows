@@ -2,15 +2,12 @@
 
 namespace Karakuri
 {
-	VertexShader::VertexShader(Graphics* graphics, const std::wstring& path)
+	VertexShader::VertexShader(Graphics* graphics, const int size, const BYTE* shader)
 	{
-		D3DReadFileToBlob(path.c_str(), &bytecodeBlob);
+		D3DCreateBlob(size, &bytecodeBlob);
+		memcpy(bytecodeBlob->GetBufferPointer(), shader, size);
 
-		GetDevice(graphics)->CreateVertexShader(
-			bytecodeBlob->GetBufferPointer(),
-			bytecodeBlob->GetBufferSize(),
-			nullptr,
-			&vertexShader);
+		GetDevice(graphics)->CreateVertexShader(shader, size, NULL, &vertexShader);
 	}
 
 	void VertexShader::Bind(Graphics* graphics) {

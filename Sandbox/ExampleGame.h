@@ -14,5 +14,6 @@ public:
 private:
 	Karakuri::Texture test1;
 	Karakuri::Texture test2;
+	Karakuri::Texture test3;
 	Karakuri::SpriteRenderer renderer = NULL;
 };

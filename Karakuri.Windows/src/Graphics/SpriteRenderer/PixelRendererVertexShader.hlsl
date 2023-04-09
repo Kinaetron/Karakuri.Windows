@@ -1,21 +1,20 @@
-cbuffer ConstantBuffer
+cbuffer VertexConstantBufferSprite
 {
     matrix model;
     matrix projection;
-}
+};
 
-struct VertexShaderOut
+struct VSOut
 {
-    float2 textureCoordinate : TextureCoordinate;
-    float4 position : SV_Position;
+    float2 tex : TexCoord;
+    float4 pos : SV_Position;
 };
 
 
-VertexShaderOut main(float2 position : Position, float2 textureCoordinate : TextureCoordinate)
+VSOut main(float2 pos : POSITION, float2 tex : TexCoord)
 {
-    VertexShaderOut vertexShaderOut;
-    vertexShaderOut.textureCoordinate = textureCoordinate;
-    vertexShaderOut.position = mul(mul(projection, model), float4(position, 0.0f, 1.0f));
-    
-	return vertexShaderOut;
+    VSOut vso;
+    vso.pos = mul(mul(projection, model), float4(pos.xy, 0.0f, 1.0f));
+    vso.tex = tex;
+    return vso;
 }

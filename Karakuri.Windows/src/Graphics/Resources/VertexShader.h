@@ -1,5 +1,4 @@
 #pragma once
-#include <string>
 #include "Bindable.h"
 
 namespace Karakuri
@@ -7,7 +6,7 @@ namespace Karakuri
 	class VertexShader : public Bindable
 	{
 	public:
-		VertexShader(Graphics* graphics, const std::wstring& path);
+		VertexShader(Graphics* graphics, const int size, const BYTE* shader);
 		void Bind(Graphics* graphics) override;
 		ID3DBlob* GetBytecode() const;
 

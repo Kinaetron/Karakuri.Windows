@@ -1,4 +1,6 @@
 #include "SpriteRenderer.h"
+#include "PixelRendererPixelShader.h"
+#include "PixelRendererVertexShader.h"
 #include "../Resources/Texture.h"
 #include "../Resources/Sampler.h"
 #include "../Resources/IndexBuffer.h"
@@ -21,7 +23,6 @@ namespace Karakuri
 		}
 
 		this->graphics = graphics;
-
 		projection = DirectX::SimpleMath::Matrix::CreateOrthographicOffCenter(0.0f, static_cast<float>(graphics->Width()), static_cast<float>(graphics->Height()), 0.0f, -1.0f, 1.0f);
 
 		const std::vector<Vertex> vertices =
@@ -42,10 +43,10 @@ namespace Karakuri
 		auto indexBuffer = Karakuri::IndexBuffer(graphics, indices);
 		indexBuffer.Bind(graphics);
 
-		auto pixelShader = PixelShader(graphics, L"SpriteRendererPixelShader.cso");
+		auto pixelShader = PixelShader(graphics, sizeof(g_SpriteRendererPixelShader),  g_SpriteRendererPixelShader);
 		pixelShader.Bind(graphics);
 
-		auto vertexShader = VertexShader(graphics, L"PixelRendererVertexShader.cso");
+		auto vertexShader = VertexShader(graphics, sizeof(g_PixelRendererVertexShader), g_PixelRendererVertexShader);
 		vertexShader.Bind(graphics);
 
 		auto sampler = Karakuri::Sampler(graphics);

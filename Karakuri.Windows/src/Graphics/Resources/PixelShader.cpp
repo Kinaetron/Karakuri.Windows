@@ -2,15 +2,9 @@
 
 namespace Karakuri
 {
-	PixelShader::PixelShader(Graphics* graphics, const std::wstring& path)
+	PixelShader::PixelShader(Graphics* graphics, const int size, const BYTE* shader)
 	{
-		D3DReadFileToBlob(path.c_str(), &bytecodeBlob);
-
-		GetDevice(graphics)->CreatePixelShader(
-			bytecodeBlob->GetBufferPointer(),
-			bytecodeBlob->GetBufferSize(),
-			nullptr,
-			&pixelShader);
+		GetDevice(graphics)->CreatePixelShader(shader, size, NULL, &pixelShader);
 	}
 
 	void PixelShader::Bind(Graphics* graphics) {

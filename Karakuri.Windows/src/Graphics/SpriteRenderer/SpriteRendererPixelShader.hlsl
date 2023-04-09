@@ -1,10 +1,10 @@
-cbuffer ConstantBuffer {
+cbuffer PixelConstantBufferSprite {
     float4 color;
 }
 
-Texture2D textureIn;
-SamplerState samplerIn;
+Texture2D tex;
+SamplerState splr;
 
-float4 main(float2 textureCoordinate : TextureCoordinate) : SV_TARGET {
-    return mul(color, textureIn.Sample(samplerIn, textureCoordinate));
+float4 main(float2 tc : TexCoord) : SV_TARGET {
+    return color * tex.Sample(splr, tc);
 }
