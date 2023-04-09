@@ -61,7 +61,7 @@ namespace Karakuri
 		layout.Bind(graphics);
 	}
 
-	void SpriteRenderer::Draw(Texture& texture, DirectX::SimpleMath::Vector2 position, DirectX::SimpleMath::Vector2 size, float rotate, DirectX::SimpleMath::Color color)
+	void SpriteRenderer::Draw(Texture& texture, DirectX::SimpleMath::Vector2 position, DirectX::SimpleMath::Vector2 size, DirectX::SimpleMath::Vector2 origin, float rotate, DirectX::SimpleMath::Color color)
 	{
 		texture.Bind(graphics);
 
@@ -69,9 +69,8 @@ namespace Karakuri
 
 		model = DirectX::SimpleMath::Matrix::CreateTranslation(DirectX::SimpleMath::Vector3(position.x, position.y, 0.0f)) * model;
 
-		model = DirectX::SimpleMath::Matrix::CreateTranslation(DirectX::SimpleMath::Vector3(size.x * 0.5f, size.y * 0.5f, 0.0f)) * model;
+		model = DirectX::SimpleMath::Matrix::CreateTranslation(DirectX::SimpleMath::Vector3(-origin.x, -origin.y, 0.0f)) * model;
 		model = DirectX::SimpleMath::Matrix::CreateRotationZ(rotate) * model;
-		model = DirectX::SimpleMath::Matrix::CreateTranslation(DirectX::SimpleMath::Vector3(size.x * -0.5f, size.y * -0.5f, 0.0f)) * model;
 
 		model = DirectX::SimpleMath::Matrix::CreateScale(size.x, size.y, 1.0f) * model;
 

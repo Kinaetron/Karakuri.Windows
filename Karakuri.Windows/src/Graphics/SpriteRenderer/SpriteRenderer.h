@@ -31,8 +31,9 @@ namespace Karakuri
 		~SpriteRenderer();
 		void Draw(
 			Texture& texture,
-			DirectX::SimpleMath::Vector2 position,
+			DirectX::SimpleMath::Vector2 position = { 0, 0 },
 			DirectX::SimpleMath::Vector2 size = { 10, 10 },
+			DirectX::SimpleMath::Vector2 origin = { 0, 0 },
 			float rotate = 0.0f,
 			DirectX::SimpleMath::Color color = Karakuri::Colors::White);
 
